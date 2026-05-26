@@ -1,0 +1,33 @@
+:root {
+  --bg-dark: #092745;
+  --bg-card: #2c5074;
+  --accent: #39b1c9;
+  --text-muted: #adb5bd;
+  --text-primary: #eee;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Footer */
+footer {
+  background: #000;
+  padding: 50px 0;
+  border-top: 1px solid #222;
+}
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.footer-link:hover {
+  color: var(--accent);
+}
