@@ -1,9 +1,10 @@
 :root {
   --bg-dark: #092745;
-  --bg-card: #2c5074;
+  --bg-card: #f8f9fa47;
   --accent: #39b1c9;
   --text-muted: #adb5bd;
   --text-primary: #eee;
+  --color-icon: rgb(255 193 7);
 }
 
 body {
@@ -13,7 +14,22 @@ body {
 
 /* Navbar */
 .navbar {
-  background-color: var(--bg-card) !important;
+  background-color: #000 !important;
+  color: var(--text-primary) !important;
+}
+.navbar .nav-link {
+  color: var(--text-primary) !important;
+  transition: 0.3s;
+}
+.navbar .nav-link:hover {
+  color: var(--accent) !important;
+}
+.navbar-toggler,
+.navbar-toggler-icon,
+.navbar-brand {
+  border-color: var(--text-primary) !important;
+}
+.navbar-brand {
   color: var(--text-primary) !important;
 }
 
@@ -30,4 +46,68 @@ footer {
 }
 .footer-link:hover {
   color: var(--accent);
+}
+
+/* Estilos personalizados para el carrusel */
+.carousel-item {
+  min-height: 350px;
+  background-color: var(--bg-card);
+}
+.carousel-item .text-muted {
+  color: var(--text-primary) !important;
+}
+
+/* Animación y diseño para las tarjetas de Hobbies */
+.hobby-card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+}
+.hobby-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.hobby-icon {
+  font-size: 2.5rem;
+  color: var(--color-icon);
+}
+
+/* Animación CSS para las redes sociales al pasar el mouse (Hover) */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  background-color: var(--bg-card);
+  color: var(--icon-color);
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+/* Efectos individuales por red social */
+.link-google:hover {
+  background-color: #db4437;
+  color: white;
+  transform: scale(1.1) rotate(-2deg);
+}
+.link-instagram:hover {
+  background-color: #e1306c;
+  color: white;
+  transform: scale(1.1) translateY(-3px);
+}
+.link-linkedin:hover {
+  background-color: #0077b5;
+  color: white;
+  transform: scale(1.1) rotate(2deg);
+}
+.link-github:hover {
+  background-color: #24292e;
+  color: white;
+  transform: scale(1.1) translateY(-3px);
 }
