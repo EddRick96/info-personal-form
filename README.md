@@ -34,3 +34,30 @@ Carpeta principal que contiene la lógica del negocio, vistas del panel y proces
 
 ### 📄 Archivos en la Raíz
 * `README.md`: Documentación técnica del proyecto (este archivo), su configuración y uso general.
+
+## 🚀 Despliegue en InfinityFree (Hosting Gratuito)
+
+Para subir y poner en marcha este proyecto en los servidores de InfinityFree, sigue estos pasos:
+
+### 1. Preparación de la Base de Datos
+1. Inicia sesión en tu panel de InfinityFree y dirígete a **MySQL Databases**.
+2. Crea una nueva base de datos (copia el nombre asignado, que suele tener un prefijo como `if0_XXXXXX`).
+3. Haz clic en **Admin** para abrir **phpMyAdmin** desde el hosting.
+4. Ve a la pestaña **SQL** e importa o ejecuta el script de creación de tus tablas (`Users`, `Messages`) y la vista (`vista_mensajes_profe`).
+5. Inserta manualmente los usuarios iniciales (`admin` y `profe`).
+
+### 2. Configurar la Conexión en PHP
+Antes de subir los archivos, debes actualizar las credenciales en tu archivo `config/database.php` con los datos que te provee InfinityFree en su panel de control:
+* **Host:** `sqlXXX.infinityfree.com` (No uses "localhost").
+* **User:** El usuario de base de datos asignado (ej. `if0_XXXXXX`).
+* **Password:** La contraseña de tu cuenta de InfinityFree (la encuentras en *Account Details*).
+* **Database Name:** El nombre exacto de la base de datos creada.
+
+### 3. Subir los Archivos al Servidor
+1. En el panel de InfinityFree, abre el **Online File Manager** (o usa un cliente FTP como FileZilla).
+2. Entra a la carpeta obligatoria **`htdocs/`**.
+3. Sube todo el contenido de tu proyecto **dentro** de `htdocs/`. 
+   > ⚠️ **Nota:** Asegúrate de conservar la estructura intacta (`assets/`, `config/`, `controllers/`, etc.). El archivo `index.php` principal del inicio debe quedar directamente en la raíz de `htdocs/` para que la web cargue correctamente al ingresar al dominio.
+
+### 4. Ajustes de Rutas (Si aplica)
+* Recuerda que los servidores de InfinityFree basados en Linux son estrictos con las mayúsculas y minúsculas (*Case Sensitive*). Revisa que las llamadas en tus `include` o `require_once` coincidan exactamente con los nombres reales de los archivos en tu estructura.
