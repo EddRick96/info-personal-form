@@ -34,7 +34,7 @@ $result = $conn->query($query);
 
             <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
                 <table class="table table-hover table-dark align-middle m-0">
-                    <thead class="sticky-top" style="z-index: 1020; background-color: #212529;">
+                    <thead style="z-index: 1020; background-color: #212529;">
                         <tr>
                             <th scope="col" style="width: 20%;">Nombre</th>
                             <th scope="col" style="width: 25%;">Correo Electrónico</th>
