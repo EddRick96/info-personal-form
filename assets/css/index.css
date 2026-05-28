@@ -5,6 +5,7 @@
   --text-muted: #adb5bd;
   --text-primary: #eee;
   --color-icon: rgb(255 193 7);
+  --bs-btn-close-color: var(--text-primary);
 }
 
 body {
@@ -110,4 +111,11 @@ footer {
   background-color: #24292e;
   color: white;
   transform: scale(1.1) translateY(-3px);
+}
+/* Estilos para el modal de contacto */
+.modal-content {
+  background-color: #000 !important;
+}
+.modal-header .btn-close {
+  color: var(--bs-btn-close-color) !important;
 }

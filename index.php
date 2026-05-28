@@ -1,27 +1,4 @@
 <?php include 'navbar.php'; ?>
-<!-- <section id="home">
-            <h2>Biografía</h2>
-            <p>Mi nombre es Erick Bolaños, tengo 30 años y soy tecnico en soporte de TI en una institución educativa por ya 4 años.
-                Tengo experiencia en el área de soporte técnico, mantenimiento de hardware y software, así como en la gestión de redes y sistemas operativos. Me considero una persona proactiva, responsable y con habilidades para trabajar en equipo. En mi tiempo libre, me gusta aprender sobre nuevas tecnologías y mejorar mis habilidades en el campo de la informática.</p>
-                Obtuve una certificación en Microsoft Administrator Associate, lo que me ha permitido adquirir conocimientos avanzados en la administración de sistemas operativos Windows Server, 
-                así como en la gestión de redes y servicios en la nube. Esta certificación ha sido un gran logro en mi carrera profesional y me ha brindado la oportunidad de aplicar mis habilidades en proyectos más complejos y desafiantes.
-                También tengo experiencia en la administración de sistemas operativos Linux, lo que me ha permitido ampliar mis conocimientos en el campo de la informática y estar preparado para enfrentar diferentes desafíos en el ámbito tecnológico. 
-                Estoy comprometido con mi desarrollo profesional y siempre busco oportunidades para aprender y crecer en mi carrera.
-            </p>
-        </section>
-        <section id="about">
-            <h2>Hobbies</h2>
-            <p>Disfruto hacer deporte, jugar futbol, basket, bailar, ver animes, tocar guitarra, cantar.</p>
-        </section>
-        <section id="contact">
-            <h3>Redes sociales</h3>
-            <ul>
-                <li><a href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><i class="bi bi-google"></i> Google</a></li>
-                <li><a href="https://www.instagram.com/erick_bolanos_/" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
-                <li><a href="https://www.linkedin.com/in/erick-david-bolanos-guerrero-635a28175/" target="_blank"><i class="bi bi-linkedin"></i> LinkedIn</a></li>
-                <li><a href="https://github.com/EddRick96" target="_blank"><i class="bi bi-github"></i> GitHub</a></li>
-            </ul>
-        </section> -->
 <div class="container py-5">
 
     <section id="home" class="mb-5">

@@ -33,39 +33,60 @@
     </div>
 </div>
 <?php if (isset($_GET['status'])): ?>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Capturamos el estado enviado por la URL
-        const status = "<?php echo $_GET['status']; ?>";
-        
-        // Elementos del modal
-        const modalElement = document.getElementById('statusModal');
-        const modalTitle = document.getElementById('statusModalLabel');
-        const modalIcon = document.getElementById('modalIcon');
-        const modalMessage = document.getElementById('modalMessage');
-        const modalBtn = document.getElementById('modalBtn');
-        
-        // Configuración dependiendo del resultado
-        if (status === 'success') {
-            modalTitle.innerText = '¡Éxito!';
-            modalTitle.classList.add('text-success');
-            modalIcon.innerHTML = '<i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>';
-            modalMessage.innerText = 'Mensaje enviado correctamente.';
-            modalBtn.classList.add('btn-success');
-        } else if (status === 'error') {
-            modalTitle.innerText = 'Hubo un problema';
-            modalTitle.classList.add('text-danger');
-            modalIcon.innerHTML = '<i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 3rem;"></i>';
-            modalMessage.innerText = 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.';
-            modalBtn.classList.add('btn-danger');
-        }
-        
-        // Inicializar y mostrar el modal de Bootstrap
-        const myModal = new bootstrap.Modal(modalElement);
-        myModal.show();
-        
-        // Limpiar la URL para que no se vuelva a abrir el modal si el usuario recarga la página
-        window.history.replaceState({}, document.title, window.location.pathname);
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Capturamos el estado enviado por la URL
+            const status = "<?php echo htmlspecialchars($_GET['status'], ENT_QUOTES, 'UTF-8'); ?>";
+
+            // Elementos del modal
+            const modalElement = document.getElementById('statusModal');
+            const modalTitle = document.getElementById('statusModalLabel');
+            const modalIcon = document.getElementById('modalIcon');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalBtn = document.getElementById('modalBtn');
+
+            if (!modalElement) {
+                console.error("No se encontró el elemento #statusModal en el DOM.");
+                return;
+            }
+
+            // Limpiar clases previas para evitar conflictos si se recarga
+            modalTitle.className = "modal-title";
+            modalBtn.className = "btn px-4";
+
+            // Configuración dependiendo del resultado
+            if (status === 'success') {
+                modalTitle.innerText = '¡Éxito!';
+                modalTitle.classList.add('text-success');
+                modalIcon.innerHTML = '<i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>';
+                modalMessage.innerText = 'Mensaje enviado correctamente.';
+                modalBtn.classList.add('btn-success');
+            } else if (status === 'error') {
+                modalTitle.innerText = 'Hubo un problema';
+                modalTitle.classList.add('text-danger');
+                modalIcon.innerHTML = '<i class="bi bi-exclamation-triangle-fill text-danger" style="font-size: 3rem;"></i>';
+                modalMessage.innerText = 'Error al enviar el mensaje. Por favor, inténtalo de nuevo.';
+                modalBtn.classList.add('btn-danger');
+            } else if (status === 'invalid_data') {
+                modalTitle.innerText = 'Datos no válidos';
+                modalTitle.classList.add('text-warning');
+                modalIcon.innerHTML = '<i class="bi bi-exclamation-circle-fill text-warning" style="font-size: 3rem;"></i>';
+                modalMessage.innerText = 'Por favor, verifica que todos los campos estén llenos y el correo sea correcto.';
+                modalBtn.classList.add('btn-warning');
+            }
+
+            // Inicializar y mostrar el modal de Bootstrap de forma segura
+            try {
+                const myModal = new bootstrap.Modal(modalElement);
+                myModal.show();
+
+                // Limpiar la URL para comodidad del usuario
+                window.history.replaceState({}, document.title, window.location.pathname);
+            } catch (error) {
+                console.error("Error al inicializar el modal de Bootstrap:", error);
+                alert("El mensaje se procesó con estado: " + status + ". (Falta cargar la librería JS de Bootstrap)");
+            }
+        });
     </script>
 <?php endif; ?>
 <?php include 'footer.php'; ?>
