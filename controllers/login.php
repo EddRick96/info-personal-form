@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             exit();
         } else {
-            echo "<script>alert('Contraseña incorrecta'); window.location.href='../../index.php';</script>";
+            echo "<script>alert('Contraseña incorrecta'); window.location.href='../index.php';</script>";
         }
     } else {
         // Si entra aquí es porque el usuario no existe O no es ni 'admin' ni 'profe'
-        echo "<script>alert('Acceso denegado u usuario no autorizado'); window.location.href='../../index.php';</script>";
+        echo "<script>alert('Acceso denegado u usuario no autorizado'); window.location.href='../index.php';</script>";
     }
     
     $stmt->close(); 
