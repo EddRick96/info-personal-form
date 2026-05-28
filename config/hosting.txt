@@ -1,0 +1,42 @@
+USE db_bitbio_mensajes;
+
+-- 2. CREACIÓN DE LA TABLA USERS
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name_user VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL, -- Se recomienda usar más espacio para contraseñas encriptadas
+    role VARCHAR(30) NOT NULL
+);
+
+-- 3. CREACIÓN DE LA TABLA MESSAGES
+CREATE TABLE IF NOT EXISTS messages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    mail VARCHAR(100) NOT NULL,
+    message TEXT NOT NULL,
+    date_state TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- 4. INSERTAR LOS USUARIOS EN LA TABLA USERS (Opcional, para registro interno)
+INSERT INTO users (name_user, password, role) VALUES 
+('admin', '4Dm!n.26', 'Administrador'),
+('profe', 'Profe.2026', 'Profesor');
+
+El hosting no te da permisos de crear una vista
+
+-- 5. CREACIÓN DE LA VISTA PARA EL PROFESOR
+CREATE VIEW vista_mensajes_profe AS 
+SELECT id, name, mail, message, date_state 
+FROM messages;
+
+-- 6. CREACIÓN DE USUARIOS DEL SISTEMA Y ASIGNACIÓN DE PERMISOS
+-- Nota: 'localhost' permite la conexión desde el mismo servidor (común en phpMyAdmin).
+
+-- Usuario Admin: Gestión total de la tabla Messages (y acceso a la base de datos)
+CREATE USER 'admin'@'localhost' IDENTIFIED BY '4Dm!n.26';
+GRANT ALL PRIVILEGES ON db_bitbio_mensajes.Messages TO 'admin'@'sql200.infinityfree.com';
+GRANT SELECT ON db_bitbio_mensajes.Users TO 'admin'@'localhost'; -- Permiso extra para que pueda ver los usuarios si lo desea
+
+-- Usuario Profe: Solo lectura (SELECT) exclusivamente en la vista creada
+CREATE USER 'profe'@'localhost' IDENTIFIED BY 'Profe.2026';
+GRANT SELECT ON db_bitbio_mensajes.vista_mensajes_profe TO 'profe'@'sql200.infinityfree.com';

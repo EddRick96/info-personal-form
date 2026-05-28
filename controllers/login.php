@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // CORRECCIÓN Y FILTRO: Buscamos el usuario, pero limitamos la consulta estrictamente a 'admin' o 'profe'
-    $stmt = $conn->prepare("SELECT * FROM Users WHERE (name_user = 'admin' OR name_user = 'profe') AND name_user = ?");
+    $stmt = $conn->prepare("SELECT * FROM users WHERE (name_user = 'admin' OR name_user = 'profe') AND name_user = ?");
     $stmt->bind_param("s", $name_user);
     $stmt->execute();
     
